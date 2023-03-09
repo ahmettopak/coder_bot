@@ -33,9 +33,7 @@ function typeText(element, text) {
   }, 20)
 }
 
-// generate unique ID for each message div of bot
-// necessary for typing text effect for that specific reply
-// without unique ID, typing text will work on every element
+
 function generateUniqueId() {
   const timestamp = Date.now();
   const randomNumber = Math.random();
@@ -67,13 +65,12 @@ const handleSubmit = async (e) => {
 
   const data = new FormData(form)
 
-  // user's chatstripe
   chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
 
-  // to clear the textarea input 
+
   form.reset()
 
-  // bot's chatstripe
+
   const uniqueId = generateUniqueId()
   chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
 
